@@ -1,5 +1,4 @@
 {
-  // "extends"
   "compilerOptions": {
     "allowJs": true /* Allow javascript files to be compiled. */,
     // "baseUrl": "./",                       /* Base directory to resolve non-absolute module names. */
@@ -55,8 +54,9 @@
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
   },
   "exclude": ["node_modules"],
-  "files": ["cucumber.js", "eslint.config.js", "src-cucumber", "src-pw"],
-  "include": ["src-cucumber"],
+  "files": ["cucumber.js", "eslint.config.js"],
+  "include": ["src*/**/*", "test*/**/*"],
+  // "exclude": ["**/*.spec.ts"]
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node"

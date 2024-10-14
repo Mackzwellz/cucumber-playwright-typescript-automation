@@ -9,7 +9,10 @@ Sample test automation project based on the following repos:
 
 - [ ] should be easy setup & get started (add documentation)
   - [x] add recommended vscode extensions
-  - [ ] configure rcfiles (lint, prettier, tsconfig) to enforce standards
+  - [ ] configure rcfiles (lint, prettier, tsconfig) to enforce standards (mostly done)
+    - [ ] figure out glue+feature files not properly linked in vscode
+    - [ ] configure run & debug stuff
+    - [ ] complete setup <https://github.com/microsoft/vscode-eslint>
   - [ ] useful hotkeys
 - [ ] explore/support both runner options if possible (cucumber & playwright)
   - [x] `npm run test` - cucumber + playwright using cucumber runner
@@ -18,7 +21,7 @@ Sample test automation project based on the following repos:
 - [ ] explore/support both page object pattern and functional pattern (use both, see what happens)
   - [x] add as separate directories, make sure both test scopes work
   - [ ] merge together & clean up
-  - [ ] use multiple tsconfigs for better flexibility
+  - [ ] use multiple tsconfigs for better flexibility (is it possible?)
 - [ ] showcase/document run and reporting options
   - [ ] pw
   - [ ] cucumber
@@ -35,8 +38,6 @@ Sample test automation project based on the following repos:
 ## Tips & tricks
 
 - always look at `package.json` to see available commands!
-- TODO use <https://github.com/tsconfig/bases/>
-- TODO complete setup <https://github.com/microsoft/vscode-eslint>
 
 ## What's been explored
 

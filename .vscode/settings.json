@@ -1,4 +1,56 @@
 {
+  //   "[javascript]": {
+  //     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  //   },
+  //   "[json]": {
+  //     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  //   },
+  //   "[jsonc]": {
+  //     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  //   },
+  //   "[markdown]": {
+  //     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  //   },
+  //   "[typescript]": {
+  //     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  //   },
+  "[cucumber]": {
+    "editor.semanticHighlighting.enabled": true
+  },
+  "cucumber.features": ["features/**/*.feature"],
+  "cucumber.glue": ["src*/**/*.ts"],
+
+  "cucumberTestRunner.env": {
+    "NODE_OPTIONS": "--import tsx",
+    "PWDEBUG": 1
+  },
+  "cucumberTestRunner.profile": "",
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports": "explicit",
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": true,
+  "editor.minimap.renderCharacters": true,
+  "editor.minimap.showSlider": "always",
+  "editor.mouseWheelZoom": true,
+  "editor.quickSuggestions": {
+    "comments": false,
+    "other": true,
+    "strings": true
+  },
+  "editor.tabCompletion": "on",
+  "eslint.alwaysShowStatus": true,
+  "eslint.enable": true,
+  "eslint.options": {},
+  "eslint.timeBudget.onFixes": {
+    "error": 6000,
+    "warn": 3000
+  },
+  "eslint.validate": ["javascript", "typescript", "json", "jsonc"],
   "files.exclude": {
     "**/.DS_Store": true,
     "**/.git": true,
@@ -7,65 +59,16 @@
     "**/build": true,
     "**/CVS": true
   },
-  "eslint.enable": true,
-  "eslint.alwaysShowStatus": true,
-  "eslint.options": {},
-  "eslint.validate": ["javascript", "typescript", "json", "jsonc"],
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "es5",
-
-  "editor.tabCompletion": "on",
-  "editor.formatOnPaste": false,
-  "editor.formatOnSave": true,
-  "editor.minimap.enabled": true,
-  "editor.minimap.showSlider": "always",
-  "editor.minimap.renderCharacters": true,
-  "editor.mouseWheelZoom": true,
-  "editor.quickSuggestions": {
-    "other": true,
-    "comments": false,
-    "strings": true
-  },
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/bower_components": true
-  },
+  "git.autofetch": true,
   "javascript.referencesCodeLens.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.referencesCodeLens.enabled": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "search.exclude": {
+    "**/bower_components": true,
+    "**/node_modules": true
+  },
   "typescript.implementationsCodeLens.enabled": true,
-  "git.autofetch": true,
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "cucumber.glue": ["src/**/*.ts"],
-  "cucumber.features": ["features/**/*.feature"],
-  "cucumberTestRunner.env": {
-    "PWDEBUG": 1,
-    "NODE_OPTIONS": "--import tsx"
-  },
-  "cucumberTestRunner.profile": "",
-  "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
-    "source.addMissingImports": "explicit",
-    "source.fixAll.eslint": "explicit",
-    "source.fixAll.stylelint": "explicit"
-  },
-  "eslint.timeBudget.onFixes": {
-    "warn": 3000,
-    "error": 6000
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "typescript.referencesCodeLens.enabled": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

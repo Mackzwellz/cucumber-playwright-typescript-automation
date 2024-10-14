@@ -19,7 +19,7 @@ let browser: Browser | ChromiumBrowser | FirefoxBrowser | WebKitBrowser;
 const tracesDir = 'traces';
 
 declare global {
-  // eslint-disable-next-line no-var
+  // eslint-disable-next-line no-var, sonarjs/no-var
   var browser: Browser | ChromiumBrowser | FirefoxBrowser | WebKitBrowser;
 }
 

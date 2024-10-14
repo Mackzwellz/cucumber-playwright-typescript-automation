@@ -7,6 +7,7 @@ test.describe.parallel('API Testing', () => {
     const response = await request.get(`${baseUrl}/users/3`);
     expect(response.status()).toBe(200);
     const responseBody = JSON.parse(await response.text());
+    expect(responseBody).not.toBeEmpty();
   });
 
   test('Simple API Test - Assert Invalid Endpoint', async ({ request }) => {
@@ -40,6 +41,7 @@ test.describe.parallel('API Testing', () => {
     const response = await request.post(`${baseUrl}/login`, {
       data: {
         email: 'eve.holt@reqres.in',
+        // eslint-disable-next-line sonarjs/no-hardcoded-credentials
         password: 'cityslicka'
       }
     });

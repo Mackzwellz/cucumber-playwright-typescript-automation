@@ -1,64 +1,9 @@
 {
-  "name": "cucumber-playwright-typescript-automation",
-  "version": "0.0.1",
-  "description": "Sample project for test automation that combines cucumber, playwright and typescript",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "update-packages": "npm update --save",
-    "format": "prettier --write --config .prettierrc '**/*.{ts,tsx,js,json,feature,md,css,html}'",
-    "format:ci": "prettier --check --config .prettierrc \"**/*.{ts,tsx,js,json,feature,md,css,html}\"",
-    "lint": "eslint --fix --config eslint.config.js **/*.{ts,tsx,js,json,feature,md,css,html}",
-    "lint:ci": "eslint --config eslint.config.js **/*.{ts,tsx,js,json,feature,md,css,html}",
-    "check-types": "tsc",
-    "pre-commit": "npm run format && npm run lint && npm run check-types",
-    "build": "rimraf build && npm run pre-commit && npm run cucumber-check",
-    "tests:chrome": "playwright test --config=playwright.config.ts --project=Chromium --reporter=list",
-    "tests:firefox": "playwright test --config=playwright.config.ts --project=Firefox --reporter=list",
-    "tests:webkit": "playwright test --config=playwright.config.ts --project=Webkit --reporter=list",
-    "tests:e2e": "playwright test --headed --config=./src-pw/tests/e2e/e2e.config.ts --project=Chromium --reporter=list",
-    "tests:visual": "playwright test --config=./src-pw/tests/visual/visual.config.ts --project=Chromium --update-snapshots --reporter=list",
-    "tests:api": "playwright test --config=./src-pw/tests/api/api.config.ts --project=Chromium --reporter=list",
-    "jenkins-server": "java -jar jenkins.war --httpPort=8080 --enable-future-java",
-    "cucumber-tsx-broken-on-windows": "tsx node_modules/.bin/cucumber-js",
-    "cucumber-bun-broken": "bunx node_modules/@cucumber/cucumber/bin/cucumber",
-    "cucumber-deno-broken": "deno node_modules/@cucumber/cucumber/bin/cucumber.js",
-    "cucumber-default-no-ts-broken": "cucumber-js test",
-    "cucumber-tsx": "tsx node_modules/@cucumber/cucumber/bin/cucumber.js",
-    "cucumber-tsnode": "npx cucumber-js --loader ts-node/esm",
-    "cucumber-check": "npm run cucumber features/**/*.feature --dry-run --require env/set-environment-variables.ts --require world/custom-world.ts --require step-definitions/**/*.ts --require hooks/**/*.ts  --require-module ts-node/register --format-options \"{\\\"snippetInterface\\\": \\\"async-await\\\"}\" --format summary --format progress --format progress-bar  --publish-quiet",
-    "snippets": "npm run cucumber  features/**/*.feature --dry-run --format snippets",
-    "steps-usage": "tsx $(bin)/cucumber-js features/**/*.feature --dry-run",
-    "cucumber": "npm run cucumber-tsx",
-    "all": "npm run cucumber features/**/*.feature",
-    "test": "npm run cucumber ",
-    "test:parallel": "npm run cucumber  --parallel=2",
-    "api": "DEBUG=pw:api npm run cucumber",
-    "debug": "PWDEBUG=1 DEBUG=pw:api npm run cucumber ",
-    "video": "PWVIDEO=1 npm run cucumber ",
-    "only": "npm run cucumber -- --tags @only",
-    "report": "open test-results/report.html",
-    "docker": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:latest /bin/bash",
-    "allure": "allure serve test-results/allure-results"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tallyb/cucumber7-playwright.git"
-  },
   "author": "Mackzwellz",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tallyb/cucumber-playwright/issues"
   },
-  "homepage": "https://github.com/tallyb/cucumber-playwright#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run pre-commit"
-    }
-  },
+  "description": "Sample project for test automation that combines cucumber, playwright and typescript",
   "devDependencies": {
     "@cucumber/cucumber": "11.0.1",
     "@cucumber/html-formatter": "21.7.0",
@@ -109,5 +54,60 @@
     "tsx": "^4.19.1",
     "typescript": "5.6.2",
     "typescript-eslint": "^8.8.1"
-  }
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "homepage": "https://github.com/tallyb/cucumber-playwright#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit"
+    }
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "name": "cucumber-playwright-typescript-automation",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tallyb/cucumber7-playwright.git"
+  },
+  "scripts": {
+    "all": "npm run cucumber features/**/*.feature",
+    "allure": "allure serve test-results/allure-results",
+    "api": "DEBUG=pw:api npm run cucumber",
+    "build": "rimraf build && npm run pre-commit && npm run cucumber-check",
+    "check-types": "tsc",
+    "cucumber": "npm run cucumber-tsx",
+    "cucumber-bun-broken": "bunx node_modules/@cucumber/cucumber/bin/cucumber",
+    "cucumber-check": "npm run cucumber features/**/*.feature --dry-run --require env/set-environment-variables.ts --require world/custom-world.ts --require step-definitions/**/*.ts --require hooks/**/*.ts  --require-module ts-node/register --format-options \"{\\\"snippetInterface\\\": \\\"async-await\\\"}\" --format summary --format progress --format progress-bar  --publish-quiet",
+    "cucumber-default-no-ts-broken": "cucumber-js test",
+    "cucumber-deno-broken": "deno node_modules/@cucumber/cucumber/bin/cucumber.js",
+    "cucumber-tsnode": "npx cucumber-js --loader ts-node/esm",
+    "cucumber-tsx": "tsx node_modules/@cucumber/cucumber/bin/cucumber.js",
+    "cucumber-tsx-broken-on-windows": "tsx node_modules/.bin/cucumber-js",
+    "debug": "PWDEBUG=1 DEBUG=pw:api npm run cucumber ",
+    "docker": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:latest /bin/bash",
+    "format": "prettier --write --config .prettierrc '**/*.{ts,tsx,js,json,feature,md,css,html}'",
+    "format:ci": "prettier --check --config .prettierrc \"**/*.{ts,tsx,js,json,feature,md,css,html}\"",
+    "jenkins-server": "java -jar jenkins.war --httpPort=8080 --enable-future-java",
+    "lint": "eslint --fix --config eslint.config.js **/*.{ts,tsx,js,json,feature,md,css,html}",
+    "lint:ci": "eslint --config eslint.config.js **/*.{ts,tsx,js,json,feature,md,css,html}",
+    "only": "npm run cucumber -- --tags @only",
+    "pre-commit": "npm run format && npm run lint && npm run check-types",
+    "report": "open test-results/report.html",
+    "snippets": "npm run cucumber  features/**/*.feature --dry-run --format snippets",
+    "steps-usage": "tsx $(bin)/cucumber-js features/**/*.feature --dry-run",
+    "test": "npm run cucumber ",
+    "test:parallel": "npm run cucumber  --parallel=2",
+    "tests:api": "playwright test --config=./src-pw/tests/api/api.config.ts --project=Chromium --reporter=list",
+    "tests:chrome": "playwright test --config=playwright.config.ts --project=Chromium --reporter=list",
+    "tests:e2e": "playwright test --headed --config=./src-pw/tests/e2e/e2e.config.ts --project=Chromium --reporter=list",
+    "tests:firefox": "playwright test --config=playwright.config.ts --project=Firefox --reporter=list",
+    "tests:visual": "playwright test --config=./src-pw/tests/visual/visual.config.ts --project=Chromium --update-snapshots --reporter=list",
+    "tests:webkit": "playwright test --config=playwright.config.ts --project=Webkit --reporter=list",
+    "update-packages": "npm update --save",
+    "video": "PWVIDEO=1 npm run cucumber "
+  },
+  "type": "module",
+  "version": "0.0.1"
 }

@@ -1,3 +1,4 @@
+/* exported page */
 import { test } from '@playwright/test';
 
 import { HomePage } from '../../page-objects/bank/HomePage';

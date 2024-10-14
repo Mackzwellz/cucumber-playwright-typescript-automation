@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { test } from '@playwright/test';
 
 import { Navbar } from '../../page-objects/bank/components/Navbar';
 import { HomePage } from '../../page-objects/bank/HomePage';

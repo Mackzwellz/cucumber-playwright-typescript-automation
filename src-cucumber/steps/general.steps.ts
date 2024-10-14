@@ -16,9 +16,9 @@ Then('Snapshot', async function (this: ICustomWorld) {
   }
 });
 
-Then('debug', function () {
-  debugger;
-});
+// Then('debug', function () {
+//   debugger;
+// });
 
 Then('Screen matches the base image {string}', async function (this: ICustomWorld, name: string) {
   const screenshot = await this.page!.screenshot({});

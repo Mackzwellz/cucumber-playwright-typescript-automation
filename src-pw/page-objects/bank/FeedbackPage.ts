@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from '@playwright/test';
 
 export class FeedbackPage {
   readonly clearButton: Locator;
@@ -12,13 +12,15 @@ export class FeedbackPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.nameInput = page.locator("#name");
-    this.emailInput = page.locator("#email");
-    this.subjectInput = page.locator("#subject");
-    this.commentInput = page.locator("#comment");
+    this.nameInput = page.locator('#name');
+    this.emailInput = page.locator('#email');
+    this.subjectInput = page.locator('#subject');
+    this.commentInput = page.locator('#comment');
+    // eslint-disable-next-line quotes
     this.clearButton = page.locator("input[name='clear']");
+    // eslint-disable-next-line quotes
     this.submitButton = page.locator("input[name='submit']");
-    this.feedbackTitle = page.locator("#feedback-title");
+    this.feedbackTitle = page.locator('#feedback-title');
   }
 
   async assertReset() {

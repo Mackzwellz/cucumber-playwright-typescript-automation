@@ -2,9 +2,9 @@
   "plugins": ["prettier-plugin-gherkin", "prettier-plugin-sh"],
   "overrides": [
     {
-      "files": ["**/*.{ts,tsx,js,json,feature,md,css,html}"],
+      "files": ["**/*.{json,feature,md,css,html}"],
       "options": {
-        "singleQuote": false
+        "singleQuote": null
       }
     }
   ],

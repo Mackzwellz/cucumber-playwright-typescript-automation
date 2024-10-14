@@ -4,7 +4,6 @@
   "recommendations": [
     // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
     "adam-bender.commit-message-editor",
-    "alexkrechik.cucumberautocomplete",
     "christian-kohler.npm-intellisense",
     "christian-kohler.path-intellisense",
     "coenraads.bracket-pair-colorizer-2",
@@ -16,7 +15,6 @@
     "esbenp.prettier-vscode",
     "github.remotehub",
     "github.vscode-pull-request-github",
-    "jankaritech.gherlint-vscode",
     "leizongmin.node-module-intellisense",
     "letmaik.git-tree-compare",
     "mhutchie.git-graph",

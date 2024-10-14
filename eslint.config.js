@@ -1,20 +1,19 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
-import typescriptEslint, { rules } from '@typescript-eslint/eslint-plugin';
+import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import cucumber from 'eslint-plugin-cucumber';
 import deprecate from 'eslint-plugin-deprecate';
 import { plugin as ex } from 'eslint-plugin-exception-handling';
 import jsonFormat from 'eslint-plugin-json-format';
 import noSecrets from 'eslint-plugin-no-secrets';
-import optimizeRegex from 'eslint-plugin-optimize-regex';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+// import optimizeRegex from "eslint-plugin-optimize-regex";
 import prettier from 'eslint-plugin-prettier';
 import promise from 'eslint-plugin-promise';
 import regexp from 'eslint-plugin-regexp';
-//import simpleImportSort from 'eslint-plugin-simple-import-sort';
+// import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sonarjs from 'eslint-plugin-sonarjs';
 import writeGoodComments from 'eslint-plugin-write-good-comments';
 import globals from 'globals';
@@ -29,7 +28,7 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: ['**/build', '**/dist', '**/node_modules']
+    ignores: ['**/build', '**/dist', '**/node_modules', 'package-lock.json']
   },
   sonarjs.configs.recommended,
   ...compat.extends(
@@ -73,24 +72,24 @@ export default [
     },
 
     plugins: {
-      promise,
+      '@typescript-eslint': typescriptEslint,
       cucumber,
       deprecate,
       ex,
-      '@typescript-eslint': typescriptEslint,
       // sonarjs: sonarjs,
       'json-format': jsonFormat,
       'no-secrets': noSecrets,
+      prettier,
+      promise,
+      // "optimize-regex": optimizeRegex,
+
       regexp,
-      'optimize-regex': optimizeRegex,
-      
-      
       // 'simple-import-sort': simpleImportSort,
       'write-good-comments': writeGoodComments
-      prettier
     },
 
     rules: {
+      '@typescript-eslint/no-unused-vars': 1,
       'arrow-body-style': 'off',
       'comma-dangle': [0, 'always-multiline'],
       'cucumber/async-then': 2,
@@ -102,7 +101,7 @@ export default [
       'deprecate/function': 1,
       'deprecate/import': 1,
       'deprecate/member-expression': 1,
-      'ex/no-unhandled': 2,
+      'ex/no-unhandled': 1,
       'guard-for-in': 2,
       'import-x/first': 2,
       'import-x/newline-after-import': 2,
@@ -115,13 +114,13 @@ export default [
       'no-import-assign': 1,
       'no-loss-of-precision': 1,
       'no-prototype-builtins': 0,
-      'no-secrets/no-secrets': 2,
+      'no-secrets/no-secrets': 1,
       'no-undef': 2,
       'no-undefined': 0,
       'no-unreachable': 1,
       'no-unused-expressions': 1,
       'no-unused-vars': [
-        2,
+        1,
         {
           destructuredArrayIgnorePattern: '^_',
           ignoreRestSiblings: true
@@ -130,10 +129,12 @@ export default [
       'no-var': 2,
       'prefer-arrow-callback': 'off',
       'prefer-const': 2,
-
       'prettier/prettier': 2,
-
       quotes: [2, 'single'],
+
+      'sonarjs/no-clear-text-protocols': 1,
+
+      'sonarjs/no-commented-code': 1,
       // 'simple-import-sort/exports': 2,
       // 'simple-import-sort/imports': 2,
       'spaced-comment': [2, 'always'],
@@ -150,14 +151,18 @@ export default [
     }
   },
   {
-    files: ["**/*.json"],
+    files: ['**/*.json'],
     rules: {
-      quotes: [1, 'double'],
+      '@typescript-eslint/no-unused-expressions': 0,
+      'no-unused-expressions': 0,
+      quotes: [0, 'single']
     }
-},
+  },
   ...compat.extends('plugin:playwright/recommended').map((config) => ({
     ...config,
-    files: ['src*/**', 'test*/**']
+    files: ['src*/**', 'test*/**'],
+    rules: {
+      'playwright/no-standalone-expect': 1
+    }
   }))
-
 ];
