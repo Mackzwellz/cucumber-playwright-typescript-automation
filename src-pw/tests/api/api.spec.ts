@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe.parallel('API Testing', () => {
   const baseUrl = 'https://reqres.in/api';
@@ -27,8 +27,8 @@ test.describe.parallel('API Testing', () => {
     const newName = 'morpheus';
     const response = await request.post(`${baseUrl}/users/`, {
       data: {
-        name: newName,
-        job: 'leader'
+        job: 'leader',
+        name: newName
       }
     });
     const responseBody = JSON.parse(await response.text());
@@ -62,8 +62,8 @@ test.describe.parallel('API Testing', () => {
   test('PUT Request - Update user', async ({ request }) => {
     const response = await request.put(`${baseUrl}/users/2`, {
       data: {
-        name: 'new name',
-        job: 'new job'
+        job: 'new job',
+        name: 'new name'
       }
     });
     const responseBody = JSON.parse(await response.text());

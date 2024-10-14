@@ -1,25 +1,26 @@
-import { ICustomWorld } from './custom-world';
-import { config } from './config';
-import { Before, After, BeforeAll, AfterAll, Status, setDefaultTimeout } from '@cucumber/cucumber';
+import { After, AfterAll, Before, BeforeAll, setDefaultTimeout, Status } from '@cucumber/cucumber';
 import {
+  Browser,
   chromium,
   ChromiumBrowser,
+  ConsoleMessage,
   firefox,
   FirefoxBrowser,
-  webkit,
-  WebKitBrowser,
-  ConsoleMessage,
   request,
-  Browser
+  webkit,
+  WebKitBrowser
 } from '@playwright/test';
 import { ensureDir } from 'fs-extra';
 
-let browser: ChromiumBrowser | FirefoxBrowser | WebKitBrowser | Browser;
+import { config } from './config';
+import { ICustomWorld } from './custom-world';
+
+let browser: Browser | ChromiumBrowser | FirefoxBrowser | WebKitBrowser;
 const tracesDir = 'traces';
 
 declare global {
   // eslint-disable-next-line no-var
-  var browser: ChromiumBrowser | FirefoxBrowser | WebKitBrowser | Browser;
+  var browser: Browser | ChromiumBrowser | FirefoxBrowser | WebKitBrowser;
 }
 
 setDefaultTimeout(process.env.PWDEBUG ? -1 : 60 * 1000);
@@ -59,7 +60,7 @@ Before(async function (this: ICustomWorld, { pickle }) {
   this.context = await browser.newContext({
     acceptDownloads: true,
     recordVideo: process.env.PWVIDEO ? { dir: 'test-results/screenshots' } : undefined,
-    viewport: { width: 1200, height: 800 }
+    viewport: { height: 800, width: 1200 }
   });
   this.server = await request.newContext({
     // All requests we send go to this API endpoint.

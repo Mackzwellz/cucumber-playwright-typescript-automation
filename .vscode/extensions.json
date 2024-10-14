@@ -1,15 +1,32 @@
 {
-	// See http://go.microsoft.com/fwlink/?LinkId=827846
-	// for the documentation about the extensions.json format
-	"recommendations": [
-		// Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
-		"esbenp.prettier-vscode",
-		"dbaeumer.vscode-eslint",
-		"oderwat.indent-rainbow",
-		"coenraads.bracket-pair-colorizer-2",
-		"wmaurer.change-case",
-		"alexkrechik.cucumberautocomplete",
-		"oouo-diogo-perdigao.docthis",
-		"eamodio.gitlens"
-	]
+  // See http://go.microsoft.com/fwlink/?LinkId=827846
+  // for the documentation about the extensions.json format
+  "recommendations": [
+    // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+    "adam-bender.commit-message-editor",
+    "alexkrechik.cucumberautocomplete",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "coenraads.bracket-pair-colorizer-2",
+    "cucumberopen.cucumber-official",
+    "davidanson.vscode-markdownlint",
+    "dbaeumer.vscode-eslint",
+    "donjayamanne.githistory",
+    "dskwrk.vscode-generate-getter-setter",
+    "esbenp.prettier-vscode",
+    "github.remotehub",
+    "github.vscode-pull-request-github",
+    "jankaritech.gherlint-vscode",
+    "leizongmin.node-module-intellisense",
+    "letmaik.git-tree-compare",
+    "mhutchie.git-graph",
+    "ms-playwright.playwright",
+    "oderwat.indent-rainbow",
+    "oouo-diogo-perdigao.docthis",
+    "pomber.git-file-history",
+    "sonarsource.sonarlint-vscode",
+    "streetsidesoftware.code-spell-checker",
+    "wmaurer.change-case",
+    "ziyasal.vscode-open-in-github"
+  ]
 }

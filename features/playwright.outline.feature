@@ -1,7 +1,6 @@
 @foo
 Feature: Playwright multi docs
 
-
   Background: Navigation
     Given Go to the playwright website
 

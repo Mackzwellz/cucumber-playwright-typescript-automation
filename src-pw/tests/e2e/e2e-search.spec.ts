@@ -1,4 +1,5 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
+
 import { HomePage } from '../../page-objects/bank/HomePage';
 
 test.describe('Search results', () => {
@@ -7,7 +8,7 @@ test.describe('Search results', () => {
     await homePage.visit();
     await homePage.searchFor('bank');
 
-    const numberOfLinks = await page.locator('li > a');
+    const numberOfLinks = page.locator('li > a');
     await expect(numberOfLinks).toHaveCount(2);
   });
 });

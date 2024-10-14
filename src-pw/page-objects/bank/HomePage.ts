@@ -1,10 +1,10 @@
 import { Locator, Page } from '@playwright/test';
 
 export class HomePage {
-  readonly page: Page;
-  readonly signInButton: Locator;
-  readonly searchBox: Locator;
   readonly linkFeedback: Locator;
+  readonly page: Page;
+  readonly searchBox: Locator;
+  readonly signInButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -13,20 +13,20 @@ export class HomePage {
     this.linkFeedback = page.locator('#feedback');
   }
 
-  async visit() {
-    await this.page.goto('http://zero.webappsecurity.com');
+  async clickOnFeedback() {
+    await this.linkFeedback.click();
   }
 
   async clickOnSignIn() {
     await this.signInButton.click();
   }
 
-  async clickOnFeedback() {
-    await this.linkFeedback.click();
-  }
-
   async searchFor(phrase: string) {
     await this.searchBox.type(phrase);
     await this.page.keyboard.press('Enter');
+  }
+
+  async visit() {
+    await this.page.goto('http://zero.webappsecurity.com');
   }
 }

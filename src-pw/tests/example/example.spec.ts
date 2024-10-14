@@ -1,11 +1,12 @@
-import { test, expect } from '@playwright/test';
-import { loadHomepage, assertTitle } from './helpers';
+import { expect, test } from '@playwright/test';
+
+import { assertTitle, loadHomepage } from './helpers';
 
 // page -> ez egy page object
 test('Simple basic test', async ({ page }) => {
   await page.goto('https://www.example.com');
 
-  const pageTitle = await page.locator('h1');
+  const pageTitle = page.locator('h1');
   await expect(pageTitle).toContainText('Example Domain');
 });
 
@@ -14,7 +15,7 @@ test('Clicking on Elements', async ({ page }) => {
   await page.click('#signin_button'); // # -> akkor kell használni ha ID-ra hivatkozunk
   await page.click('text=Sign in');
 
-  const errorMessage = await page.locator('.alert-error'); // class hivatkozása esetén .-tal kell hivatkozni
+  const errorMessage = page.locator('.alert-error'); // class hivatkozása esetén .-tal kell hivatkozni
   await expect(errorMessage).toContainText('Login and/or password are wrong.');
 });
 
@@ -48,7 +49,7 @@ test.describe('My first test suite', () => {
     await page.type('#user_password', 'some pswd');
     await page.click('text=Sign in');
 
-    const errorMessage = await page.locator('.alert-error');
+    const errorMessage = page.locator('.alert-error');
     await expect(errorMessage).toContainText('Login and/or password are wrong.');
   });
 
@@ -58,13 +59,13 @@ test.describe('My first test suite', () => {
     await expect(page).toHaveURL('https://www.example.com');
     await expect(page).toHaveTitle('Example Domain');
 
-    const element = await page.locator('h1');
+    const element = page.locator('h1');
     await expect(element).toBeVisible();
     await expect(element).toHaveText('Example Domain');
     await expect(element).toHaveCount(1);
 
-    const nonExistingElement = await page.locator('h5');
-    await expect(nonExistingElement).not.toBeVisible();
+    const nonExistingElement = page.locator('h5');
+    await expect(nonExistingElement).toBeHidden();
   });
 });
 
@@ -76,11 +77,11 @@ test.describe.parallel.only('Hooks', () => {
   /* test.afterAll(async, ({ page }) => {}) */
 
   test('Screenshots', async ({ page }) => {
-    await page.screenshot({ path: 'screenshot.png', fullPage: true });
+    await page.screenshot({ fullPage: true, path: 'screenshot.png' });
   });
 
   test('Single element screenshot', async ({ page }) => {
-    const element = await page.locator('h1');
+    const element = page.locator('h1');
     await element.screenshot({ path: 'single_element_screenshot.png' });
   });
 });

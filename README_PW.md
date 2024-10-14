@@ -4,11 +4,11 @@ This test automation project is designed to provide comprehensive end-to-end tes
 
 ## Features
 
-* Page Object Pattern structure
-* End-to-end (E2E) testing
-* Advanced visual testing with snapshots
-* API testing
-* Automatic test execution through Jenkins
+- Page Object Pattern structure
+- End-to-end (E2E) testing
+- Advanced visual testing with snapshots
+- API testing
+- Automatic test execution through Jenkins
 
 ### Page Object Pattern Structure
 
@@ -38,10 +38,12 @@ This test automation project provides comprehensive testing, including E2E tests
 
 ℹ️ _Clone or download the project and run these scripts from the project library (e.g. C:\repos\playwright>)_
 
-**Run the tests from terminal (e.g.):** 
+**Run the tests from terminal (e.g.):**
+
 ```shell
 npm run tests:e2e
 ```
+
 You can use other scripts as well as described in `.\package.json`
 
 ```json
@@ -57,11 +59,11 @@ You can use other scripts as well as described in `.\package.json`
 ```
 
 **Run the tests from Jenkis based on parameters:**
+
 ```shell
 npm run jenkins-server
 ```
 
 ![kép](https://user-images.githubusercontent.com/13703469/226626739-5529b326-d820-4acc-b176-28c1727a9a8c.png)
-
 
 [^1]: The Free Online Bank Web site is published by Micro Focus Fortify, this site is not a real banking site and any similarities to third party products and/or Web sites are purely coincidental. This site is provided "as is" without warranty of any kind, either express or implied.

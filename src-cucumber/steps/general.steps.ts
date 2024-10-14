@@ -1,6 +1,7 @@
+import { Given, Then } from '@cucumber/cucumber';
+
 import { ICustomWorld } from '../support/custom-world';
 import { compareToBaseImage, getImagePath } from '../utils/compareImages';
-import { Given, Then } from '@cucumber/cucumber';
 
 Then('Snapshot {string}', async function (this: ICustomWorld, name: string) {
   const { page } = this;

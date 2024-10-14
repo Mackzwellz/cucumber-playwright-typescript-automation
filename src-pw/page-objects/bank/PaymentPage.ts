@@ -1,16 +1,16 @@
 import { expect, Locator, Page } from '@playwright/test';
 
 export class PaymentPage {
-  readonly page: Page;
-  readonly payeeSelectbox: Locator;
-  readonly payeeDetailButton: Locator;
-  readonly payeeDetail: Locator;
   readonly accountSelectbox: Locator;
   readonly amountInput: Locator;
   readonly dateInput: Locator;
   readonly descriptionInput: Locator;
-  readonly submitPaymentButton: Locator;
   readonly message: Locator;
+  readonly page: Page;
+  readonly payeeDetail: Locator;
+  readonly payeeDetailButton: Locator;
+  readonly payeeSelectbox: Locator;
+  readonly submitPaymentButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -25,6 +25,11 @@ export class PaymentPage {
     this.message = page.locator('#alert_content');
   }
 
+  async assertSuccessMessage() {
+    await expect(this.message).toBeVisible();
+    await expect(this.message).toContainText('The payment was successfully submitted.');
+  }
+
   async createPayment() {
     await this.payeeSelectbox.selectOption('apple');
     await this.payeeDetailButton.click();
@@ -34,12 +39,5 @@ export class PaymentPage {
     await this.dateInput.type('2022-09-12');
     await this.descriptionInput.type('Test description');
     await this.submitPaymentButton.click();
-  }
-
-  async assertSuccessMessage() {
-    await expect(this.message).toBeVisible();
-    await expect(this.message).toContainText(
-      'The payment was successfully submitted.'
-    );
   }
 }

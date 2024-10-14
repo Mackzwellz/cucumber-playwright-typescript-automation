@@ -1,6 +1,4 @@
 {
-  "window.zoomLevel": 0,
-  "editor.tabSize": 2,
   "files.exclude": {
     "**/.DS_Store": true,
     "**/.git": true,
@@ -9,8 +7,15 @@
     "**/build": true,
     "**/CVS": true
   },
+  "eslint.enable": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.options": {},
+  "eslint.validate": ["javascript", "typescript", "json", "jsonc"],
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+
   "editor.tabCompletion": "on",
-  "editor.formatOnPaste": true,
+  "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": true,
   "editor.minimap.showSlider": "always",
@@ -26,15 +31,10 @@
     "**/bower_components": true
   },
   "javascript.referencesCodeLens.enabled": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.referencesCodeLens.enabled": true,
   "typescript.implementationsCodeLens.enabled": true,
   "git.autofetch": true,
-  "eslint.alwaysShowStatus": true,
-  "eslint.options": {},
-  "eslint.validate": ["javascript", "typescript"],
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "es5",
-
   "typescript.tsdk": "node_modules/typescript/lib",
   "cucumber.glue": ["src/**/*.ts"],
   "cucumber.features": ["features/**/*.feature"],
@@ -43,5 +43,29 @@
     "NODE_OPTIONS": "--import tsx"
   },
   "cucumberTestRunner.profile": "",
-  "eslint.codeActionsOnSave.rules": null
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.addMissingImports": "explicit",
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "eslint.timeBudget.onFixes": {
+    "warn": 3000,
+    "error": 6000
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

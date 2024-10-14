@@ -1,6 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../../page-objects/bank/LoginPage';
+import { expect, test } from '@playwright/test';
+
 import { HomePage } from '../../page-objects/bank/HomePage';
+import { LoginPage } from '../../page-objects/bank/LoginPage';
 
 test.describe.parallel.only('Login / Logout Flow', async () => {
   let loginPage: LoginPage;
@@ -27,7 +28,7 @@ test.describe.parallel.only('Login / Logout Flow', async () => {
     await loginPage.login('username', 'password');
 
     await page.goto('http://zero.webappsecurity.com/bank/transfer-funds.html');
-    const accountSummaryTab = await page.locator('#account_summary_tab');
+    const accountSummaryTab = page.locator('#account_summary_tab');
     await expect(accountSummaryTab).toBeVisible();
 
     await page.goto('http://zero.webappsecurity.com/logout.html');

@@ -1,0 +1,124 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": "latest"
+  },
+  "settings": {
+    "import-x/resolver": {
+      "typescript": true,
+      "node": true
+    }
+  },
+  "overrides": [
+    {
+      "files": "src*/**, test*/**",
+      "extends": "plugin:playwright/recommended"
+    }
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "sonarjs",
+    "json-format",
+    "deprecate",
+    "write-good-comments",
+    "ex",
+    "promise",
+    "regexp",
+    "optimize-regex",
+    "no-secrets",
+    "simple-import-sort",
+    "cucumber"
+  ],
+  "extends": [
+    "prettier",
+    "eslint:recommended",
+    "plugin:sonarjs/recommended", //legacy
+    "plugin:depend/recommended",
+    //"plugin:json/recommended", //legacy
+    "plugin:jsonc/recommended-with-json",
+    "plugin:jsonc/recommended-with-jsonc",
+    "plugin:jsonc/prettier",
+    "plugin:promise/recommended",
+    "plugin:regexp/recommended",
+    "optimize-regex/recommended",
+    "plugin:import-x/recommended",
+    "plugin:import-x/typescript",
+    "plugin:perfectionist/recommended-natural-legacy",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "afterAll": true,
+    "afterEach": true,
+    "beforeAll": true,
+    "beforeEach": true,
+    "describe": true,
+    "expect": true,
+    "fdescribe": true,
+    "fit": true,
+    "it": true,
+    "jest": true,
+    "xdescribe": true,
+    "xit": true,
+    "test": true,
+    "xtest": true
+  },
+  "rules": {
+    "depend/ban-dependencies": 1,
+    "deprecate/function": 1,
+    "deprecate/import": 1,
+    "deprecate/member-expression": 1,
+    "ex/no-unhandled": 2,
+    "no-secrets/no-secrets": 2,
+    "prettier/prettier": 2,
+    "write-good-comments/write-good-comments": 1,
+    "simple-import-sort/imports": 2,
+    "simple-import-sort/exports": 2,
+    "import/first": 2,
+    "import/newline-after-import": 2,
+    "import/no-duplicates": 2,
+    "cucumber/async-then": 2,
+    "cucumber/expression-type": 2,
+    "cucumber/no-restricted-tags": [2, "wip", "broken", "foo"],
+    "cucumber/no-arrow-functions": 2,
+
+    "arrow-body-style": "off",
+    "comma-dangle": [0, "always-multiline"],
+    "curly": [2, "all"],
+    "guard-for-in": 2,
+    "max-len": [0, 140, 4],
+    "no-console": 1,
+    "no-continue": 1,
+    "no-eval": 2,
+    "no-fallthrough": 0,
+    "no-import-assign": 1,
+    "no-loss-of-precision": 1,
+    "no-prototype-builtins": 0,
+    "no-undef": 2,
+    "no-undefined": 0,
+    "no-unreachable": 1,
+    "no-unused-expressions": 1,
+    "no-unused-vars": [
+      2,
+      {
+        "destructuredArrayIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "no-var": 2,
+    "prefer-arrow-callback": "off",
+    "prefer-const": 2,
+    "quotes": [2, "single"],
+    "spaced-comment": [2, "always"],
+    "strict": [2, "safe"],
+    "valid-typeof": 2
+  }
+}

@@ -1,12 +1,23 @@
 {
+  "plugins": ["prettier-plugin-gherkin", "prettier-plugin-sh"],
+  "overrides": [
+    {
+      "files": ["**/*.{ts,tsx,js,json,feature,md,css,html}"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ],
   "arrowParens": "always",
+  "bracketSameLine": true,
   "bracketSpacing": true,
   "endOfLine": "auto",
-  "printWidth": 100,
+  "jsxSingleQuote": false,
+  "printWidth": 120,
+  "quoteProps": "as-needed",
   "semi": true,
-  "_semi": false,
   "singleQuote": true,
   "tabWidth": 2,
-  "trailingComma": "all",
+  "trailingComma": "none",
   "useTabs": false
 }

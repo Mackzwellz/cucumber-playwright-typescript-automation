@@ -1,8 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
+
+import { Navbar } from '../../page-objects/bank/components/Navbar';
 import { HomePage } from '../../page-objects/bank/HomePage';
 import { LoginPage } from '../../page-objects/bank/LoginPage';
 import { TransferFundsPage } from '../../page-objects/bank/TransferFundsPage';
-import { Navbar } from '../../page-objects/bank/components/Navbar';
 
 test.describe('Transfer Funds and Make Payments', () => {
   let homePage: HomePage;

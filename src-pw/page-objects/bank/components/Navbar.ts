@@ -1,13 +1,13 @@
 import { Locator, Page } from '@playwright/test';
 
 export class Navbar {
-  readonly page: Page;
-  readonly accountSummary: Locator;
   readonly accountActivity: Locator;
-  readonly transferFunds: Locator;
-  readonly payBills: Locator;
+  readonly accountSummary: Locator;
   readonly myMoneyMap: Locator;
   readonly onlineStatements: Locator;
+  readonly page: Page;
+  readonly payBills: Locator;
+  readonly transferFunds: Locator;
 
   constructor(page: Page) {
     this.accountSummary = page.locator('#account_summary_tab');
@@ -20,20 +20,12 @@ export class Navbar {
 
   async clickOnTab(tabName: string) {
     switch (tabName) {
-      case 'Account Summary':
-        await this.accountSummary.click();
-        break;
-
       case 'Account Activity':
         await this.accountActivity.click();
         break;
 
-      case 'Transfer Funds':
-        await this.transferFunds.click();
-        break;
-
-      case 'Pay Bills':
-        await this.payBills.click();
+      case 'Account Summary':
+        await this.accountSummary.click();
         break;
 
       case 'My Money Map':
@@ -42,6 +34,14 @@ export class Navbar {
 
       case 'Online Statements':
         await this.onlineStatements.click();
+        break;
+
+      case 'Pay Bills':
+        await this.payBills.click();
+        break;
+
+      case 'Transfer Funds':
+        await this.transferFunds.click();
         break;
       default:
         throw new Error('This tab does not exist...');

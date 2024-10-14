@@ -1,4 +1,5 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
+
 import { HomePage } from '../../page-objects/bank/HomePage';
 import { LoginPage } from '../../page-objects/bank/LoginPage';
 
@@ -20,7 +21,7 @@ test.describe('Account activity', () => {
     await page.click('#account_activity_tab');
     await page.selectOption('#aa_accountId', '2');
 
-    const checkingTable = await page.locator('tr > td');
+    const checkingTable = page.locator('tr > td');
     await expect(checkingTable).not.toBeEmpty;
   });
 
@@ -28,9 +29,7 @@ test.describe('Account activity', () => {
     await page.click('#account_activity_tab');
     await page.selectOption('#aa_accountId', '2');
 
-    const checkingTable = await page.locator(
-      '#all_transactions_for_account tbody tr'
-    );
+    const checkingTable = page.locator('#all_transactions_for_account tbody tr');
     await expect(checkingTable).toHaveCount(3);
   });
 
@@ -38,7 +37,7 @@ test.describe('Account activity', () => {
     await page.click('#account_activity_tab');
     await page.selectOption('#aa_accountId', '6');
 
-    const checkingTable = await page.locator('.well');
+    const checkingTable = page.locator('.well');
     await expect(checkingTable).toContainText('No results.');
   });
 });

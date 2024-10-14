@@ -1,4 +1,5 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
+
 import { HomePage } from '../../page-objects/bank/HomePage';
 import { LoginPage } from '../../page-objects/bank/LoginPage';
 
@@ -27,9 +28,7 @@ test.describe('Exchange', () => {
     await page.waitForSelector('#pc_conversion_amount');
     await page.click('#purchase_cash');
 
-    const message = await page.locator('#alert_content');
-    await expect(message).toContainText(
-      'Foreign currency cash was successfully purchased.'
-    );
+    const message = page.locator('#alert_content');
+    await expect(message).toContainText('Foreign currency cash was successfully purchased.');
   });
 });

@@ -1,4 +1,5 @@
 import { test } from '@playwright/test';
+
 import { FeedbackPage } from '../../page-objects/bank/FeedbackPage';
 import { HomePage } from '../../page-objects/bank/HomePage';
 
@@ -15,24 +16,14 @@ test.describe('Feedback Form', () => {
 
   // Reset feedback form
   test('Reset feedback form', async ({ page }) => {
-    await feedbackPage.fillForm(
-      'John Doe',
-      'johndoe@gmail.com',
-      'Something',
-      'lorem ipsum'
-    );
+    await feedbackPage.fillForm('John Doe', 'johndoe@gmail.com', 'Something', 'lorem ipsum');
     await feedbackPage.clearForm();
     await feedbackPage.assertReset();
   });
 
   // Submit feedback form
   test('Submit feedback form', async ({ page }) => {
-    await feedbackPage.fillForm(
-      'John Doe',
-      'johndoe@gmail.com',
-      'Something',
-      'lorem ipsum'
-    );
+    await feedbackPage.fillForm('John Doe', 'johndoe@gmail.com', 'Something', 'lorem ipsum');
     await feedbackPage.submitButton.click();
     await feedbackPage.feedBackFromSent();
   });

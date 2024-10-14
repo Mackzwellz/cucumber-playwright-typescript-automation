@@ -1,13 +1,14 @@
 // Added by https://github.com/ortsevlised
 
-import { config } from '../support/config';
-import { ICustomWorld } from '../support/custom-world';
-import { ensureFile, pathExists } from 'fs-extra';
-import pixelmatch from 'pixelmatch';
-import { PNG } from 'pngjs';
 import * as fs from 'fs';
 import { writeFileSync } from 'fs';
+import { ensureFile, pathExists } from 'fs-extra';
 import { join } from 'path';
+import pixelmatch from 'pixelmatch';
+import { PNG } from 'pngjs';
+
+import { config } from '../support/config';
+import { ICustomWorld } from '../support/custom-world';
 
 /**
  * Compares a screenshot to a base image,
@@ -22,11 +23,7 @@ interface ImagePathOptions {
   skipOs: boolean;
 }
 
-export function getImagePath(
-  customWorld: ICustomWorld,
-  name: string,
-  options?: ImagePathOptions
-): string {
+export function getImagePath(customWorld: ICustomWorld, name: string, options?: ImagePathOptions): string {
   return join(
     'test-results',
     'screenshots',
@@ -69,13 +66,9 @@ export async function compareToBaseImage(
  * @param img2
  * @param threshold the difference threshold
  */
-export function getDifference(
-  img1: PNG,
-  img2: PNG,
-  threshold = config.IMG_THRESHOLD
-): Buffer | undefined {
-  const { width, height } = img2;
-  const diff = new PNG({ width, height });
+export function getDifference(img1: PNG, img2: PNG, threshold = config.IMG_THRESHOLD): Buffer | undefined {
+  const { height, width } = img2;
+  const diff = new PNG({ height, width });
   const difference = pixelmatch(img1.data, img2.data, diff.data, width, height, threshold);
   if (difference > 0) {
     return PNG.sync.write(diff);

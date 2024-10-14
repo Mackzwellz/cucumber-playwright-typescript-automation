@@ -7,7 +7,6 @@ const getWorldParams = () => {
 };
 
 const config = {
-  import: ['src-cucumber/**/*.ts'],
   format: [
     // 'message:e2e/test-results/cucumber-report.ndjson',
     'json:test-results/cucumber-report.json',
@@ -16,6 +15,7 @@ const config = {
     'progress-bar'
   ],
   formatOptions: { snippetInterface: 'async-await' },
+  import: ['src-cucumber/**/*.ts'],
   worldParameters: getWorldParams()
 };
 

@@ -1,7 +1,8 @@
-import { ICustomWorld } from '../support/custom-world';
 import { Given } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { v4 } from 'uuid';
+
+import { ICustomWorld } from '../support/custom-world';
 
 Given('Go to the conduit website', async function (this: ICustomWorld) {
   const page = this.page!;

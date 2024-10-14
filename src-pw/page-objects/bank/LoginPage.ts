@@ -1,14 +1,15 @@
 import { expect, Locator, Page } from '@playwright/test';
+
 import { AbstractPage } from './AbstractPage';
 
 export class LoginPage extends AbstractPage {
+  readonly errorMessage: Locator;
+  readonly loginForm: Locator;
+  readonly passwordInput: Locator;
+  readonly submitButton: Locator;
   // Define Selectors
   // readonly page: Page --> ki kell venni ha a super(page)-t használjuk
   readonly usernameInput: Locator;
-  readonly passwordInput: Locator;
-  readonly submitButton: Locator;
-  readonly errorMessage: Locator;
-  readonly loginForm: Locator;
 
   // Init selectors using constructor
   constructor(page: Page) {
@@ -20,27 +21,21 @@ export class LoginPage extends AbstractPage {
     this.loginForm = page.locator('#login-form');
   }
 
+  async assertErrorMessage() {
+    await expect(this.errorMessage).toContainText('Login and/or password are wrong.');
+  }
+
   async login(username: string, password: string) {
     await this.usernameInput.type(username);
     await this.passwordInput.type(password);
     await this.submitButton.click();
   }
 
-  async assertErrorMessage() {
-    await expect(this.errorMessage).toContainText(
-      'Login and/or password are wrong.'
-    );
+  async snapshotErrorMessage() {
+    await expect(await this.errorMessage.screenshot()).toMatchSnapshot('login-error.png');
   }
 
   async snapshotLoginForm() {
-    await expect(await this.passwordInput.screenshot()).toMatchSnapshot(
-      'login-form.png'
-    );
-  }
-
-  async snapshotErrorMessage() {
-    await expect(await this.errorMessage.screenshot()).toMatchSnapshot(
-      'login-error.png'
-    );
+    await expect(await this.passwordInput.screenshot()).toMatchSnapshot('login-form.png');
   }
 }
