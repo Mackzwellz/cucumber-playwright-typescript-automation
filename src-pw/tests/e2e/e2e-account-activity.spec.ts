@@ -22,7 +22,7 @@ test.describe('Account activity', () => {
     await page.selectOption('#aa_accountId', '2');
 
     const checkingTable = page.locator('tr > td');
-    await expect(checkingTable).not.toBeEmpty;
+    await expect(checkingTable).not.toBeEmpty();
   });
 
   test('Show saving transactions 2', async ({ page }) => {

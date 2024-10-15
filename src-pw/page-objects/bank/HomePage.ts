@@ -22,7 +22,7 @@ export class HomePage {
   }
 
   async searchFor(phrase: string) {
-    await this.searchBox.type(phrase);
+    await this.searchBox.fill(phrase);
     await this.page.keyboard.press('Enter');
   }
 

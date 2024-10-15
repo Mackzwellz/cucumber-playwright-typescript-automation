@@ -79,7 +79,7 @@ Before(async function (this: ICustomWorld, { pickle }) {
 
 After(async function (this: ICustomWorld, { result }) {
   if (result) {
-    this.attach(`Status: ${result?.status}. Duration:${result.duration?.seconds}s`);
+    this.attach(`Status: ${result.status}. Duration:${result.duration.seconds.toString()}s`);
 
     if (result.status !== Status.PASSED) {
       const image = await this.page?.screenshot();
@@ -91,7 +91,7 @@ After(async function (this: ICustomWorld, { result }) {
         this.attach(image, 'image/png');
       }
       await this.context?.tracing.stop({
-        path: `${tracesDir}/${this.testName}-${timePart}trace.zip`
+        path: `${tracesDir}/${this.testName ?? ''}-${timePart ?? ''}trace.zip`
       });
     }
   }

@@ -35,9 +35,9 @@ export class PaymentPage {
     await this.payeeDetailButton.click();
     await expect(this.payeeDetail).toBeVisible();
     await this.accountSelectbox.selectOption('6');
-    await this.amountInput.type('500');
-    await this.dateInput.type('2022-09-12');
-    await this.descriptionInput.type('Test description');
+    await this.amountInput.fill('500');
+    await this.dateInput.fill('2022-09-12');
+    await this.descriptionInput.fill('Test description');
     await this.submitPaymentButton.click();
   }
 }

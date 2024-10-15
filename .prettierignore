@@ -1,5 +1,6 @@
 # Ignore artifacts:
 build
+dist
 node_modules
 reports
 test-results

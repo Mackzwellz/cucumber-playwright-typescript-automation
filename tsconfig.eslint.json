@@ -1,0 +1,12 @@
+{
+  "exclude": [
+    "node_modules",
+    ".vscode/**/*",
+    "eslint.config.js",
+    "package.json",
+    "renovate.json",
+    "tsconfig.eslint.json"
+  ],
+  "extends": "./tsconfig.json",
+  "include": ["src*/**/*"]
+}

@@ -1,0 +1,40 @@
+// https://github.com/gherkin-lint/gherkin-lint
+{
+  "file-name": ["on", { "style": "kebab-case" }],
+  "keywords-in-logical-order": "on",
+  // "max-scenarios-per-file": ["on", { "countOutlineExamples": false, "maxScenarios": 10 }],
+  // "name-length": ["on", { "Feature": 70, "Scenario": 70, "Step": 70 }],
+  // "new-line-at-eof": ["on", "yes"],
+  // "no-background-only-scenario": "on",
+  "no-dupe-feature-names": "on",
+  "no-dupe-scenario-names": ["on", "anywhere"],
+  "no-duplicate-tags": "on",
+  "no-empty-background": "on",
+  "no-empty-file": "on",
+  "no-examples-in-scenarios": "on",
+  "no-files-without-scenarios": "on",
+  "no-homogenous-tags": "on",
+  "no-multiple-empty-lines": "on",
+  "no-partially-commented-tag-lines": "on",
+  "no-restricted-patterns": [
+    "on",
+    {
+      "Background": ["show last response", "a debugging step", "validate", "verify"],
+      "Feature": ["poor description", "validate", "verify"],
+      "Global": ["^globally restricted pattern"],
+      "Scenario": ["show last response", "a debugging step", "validate", "verify"]
+    }
+  ],
+ // "no-restricted-tags": ["on", {"tags": ["@watch", "@wip"], "patterns": ["^@todo$"]}]
+  "no-scenario-outlines-without-examples": "on",
+  "no-superfluous-tags": "on",
+  "no-trailing-spaces": "on",
+  "no-unnamed-features": "on",
+  "no-unnamed-scenarios": "on",
+  "no-unused-variables": "on",
+  "one-space-between-tags": "on",
+  // "only-one-when": "on",
+  //"required-tags": ["on", { "ignoreUntagged": false, "tags": ["^@issue:[1-9]\\d*$"] }],
+  "scenario-size": ["on", { "steps-length": { "Background": 15, "Scenario": 15 } }],
+  "use-and": "on"
+}

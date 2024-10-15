@@ -22,7 +22,7 @@ test.describe('Exchange', () => {
     await page.click('text=Purchase Foreign Currency');
     await page.selectOption('#pc_currency', 'CAD');
     await page.waitForSelector('#sp_sell_rate');
-    await page.type('#pc_amount', '500');
+    await page.fill('#pc_amount', '500');
     await page.click('#pc_inDollars_false');
     await page.click('#pc_calculate_costs');
     await page.waitForSelector('#pc_conversion_amount');

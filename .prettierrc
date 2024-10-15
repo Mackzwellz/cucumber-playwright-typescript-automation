@@ -4,7 +4,7 @@
     {
       "files": ["**/*.{json,feature,md,css,html}"],
       "options": {
-        "singleQuote": null
+        "singleQuote": false
       }
     }
   ],

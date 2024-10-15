@@ -1,15 +1,16 @@
 import { FlatCompat } from '@eslint/eslintrc';
-import js from '@eslint/js';
-import typescriptEslint from '@typescript-eslint/eslint-plugin';
+import eslint from '@eslint/js';
 import tsParser from '@typescript-eslint/parser';
 import cucumber from 'eslint-plugin-cucumber';
 import deprecate from 'eslint-plugin-deprecate';
-import { plugin as ex } from 'eslint-plugin-exception-handling';
-import jsonFormat from 'eslint-plugin-json-format';
+// import { plugin as ex } from 'eslint-plugin-exception-handling';
 import noSecrets from 'eslint-plugin-no-secrets';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import tseslint from 'typescript-eslint';
+// import typescriptEslint from '@typescript-eslint/eslint-plugin';
 // import optimizeRegex from "eslint-plugin-optimize-regex";
+import perfectionist from 'eslint-plugin-perfectionist';
 import prettier from 'eslint-plugin-prettier';
 import promise from 'eslint-plugin-promise';
 import regexp from 'eslint-plugin-regexp';
@@ -21,18 +22,26 @@ import globals from 'globals';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({
-  allConfig: js.configs.all,
+  allConfig: eslint.configs.all,
   baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended
+  recommendedConfig: eslint.configs.recommended
 });
 
 export default [
+  // 1. Ignores
   {
-    ignores: ['**/build', '**/dist', '**/node_modules', 'package-lock.json']
+    ignores: [
+      '**/build',
+      '**/dist',
+      '**/node_modules',
+      '.vscode/**/*',
+      '**/reports',
+      '**/test-results',
+      'package-lock.json'
+    ]
   },
-  sonarjs.configs.recommended,
+  // 2. Default configs
   ...compat.extends(
-    'eslint:recommended',
     'plugin:depend/recommended',
     'plugin:jsonc/recommended-with-json',
     'plugin:jsonc/recommended-with-jsonc',
@@ -41,11 +50,23 @@ export default [
     'plugin:regexp/recommended',
     'plugin:import-x/recommended',
     'plugin:import-x/typescript',
-    'plugin:perfectionist/recommended-natural-legacy',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
+    // 'plugin:@typescript-eslint/eslint-recommended',
     'prettier'
   ),
+  ...compat.extends('plugin:playwright/recommended').map((config) => ({
+    ...config,
+    files: ['src*/**', 'test*/**'],
+    rules: {
+      'playwright/no-standalone-expect': 1
+    }
+  })),
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...tseslint.configs.strict,
+  ...tseslint.configs.stylistic,
+  sonarjs.configs.recommended,
+  perfectionist.configs['recommended-natural'],
+  // 3. Default settings/ rules
   {
     languageOptions: {
       ecmaVersion: 'latest',
@@ -70,25 +91,21 @@ export default [
       parser: tsParser,
       sourceType: 'module'
     },
-
     plugins: {
-      '@typescript-eslint': typescriptEslint,
+      // '@typescript-eslint': typescriptEslint,
       cucumber,
       deprecate,
-      ex,
-      // sonarjs: sonarjs,
-      'json-format': jsonFormat,
+      // ex,
       'no-secrets': noSecrets,
       prettier,
       promise,
       // "optimize-regex": optimizeRegex,
-
       regexp,
       // 'simple-import-sort': simpleImportSort,
       'write-good-comments': writeGoodComments
     },
-
     rules: {
+      '@typescript-eslint/no-non-null-assertion': 1,
       '@typescript-eslint/no-unused-vars': 1,
       'arrow-body-style': 'off',
       'comma-dangle': [0, 'always-multiline'],
@@ -101,7 +118,7 @@ export default [
       'deprecate/function': 1,
       'deprecate/import': 1,
       'deprecate/member-expression': 1,
-      'ex/no-unhandled': 1,
+      // 'ex/no-unhandled': 1,
       'guard-for-in': 2,
       'import-x/first': 2,
       'import-x/newline-after-import': 2,
@@ -131,9 +148,7 @@ export default [
       'prefer-const': 2,
       'prettier/prettier': 2,
       quotes: [2, 'single'],
-
       'sonarjs/no-clear-text-protocols': 1,
-
       'sonarjs/no-commented-code': 1,
       // 'simple-import-sort/exports': 2,
       // 'simple-import-sort/imports': 2,
@@ -142,7 +157,6 @@ export default [
       'valid-typeof': 2,
       'write-good-comments/write-good-comments': 1
     },
-
     settings: {
       'import-x/resolver': {
         node: true,
@@ -150,19 +164,27 @@ export default [
       }
     }
   },
+  // {
+  //   files: ['src*/**/*.ts'],
+  //   ...tseslint.configs.recommendedTypeChecked,
+  //   ...tseslint.configs.strictTypeChecked,
+  //   ...tseslint.configs.stylisticTypeChecked,
+  //   languageOptions: {
+  //     parserOptions: {
+  //       project: './tsconfig.eslint.json',
+  //       projectService: true,
+  //       tsconfigRootDir: __dirname // import.meta.dirname,
+  //     }
+  //   }
+  // },
   {
     files: ['**/*.json'],
+    ...tseslint.configs.disableTypeChecked,
     rules: {
+      // 'ex/no-unhandled': 0,
       '@typescript-eslint/no-unused-expressions': 0,
       'no-unused-expressions': 0,
       quotes: [0, 'single']
     }
-  },
-  ...compat.extends('plugin:playwright/recommended').map((config) => ({
-    ...config,
-    files: ['src*/**', 'test*/**'],
-    rules: {
-      'playwright/no-standalone-expect': 1
-    }
-  }))
+  }
 ];

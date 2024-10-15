@@ -34,7 +34,7 @@ export class TransferFundsPage {
   async createTransfer() {
     await this.fromAccountSelectbox.selectOption('2');
     await this.toAccountSelectbox.selectOption('3');
-    await this.amountInput.type('500');
-    await this.descriptionInput.type('Test message');
+    await this.amountInput.fill('500');
+    await this.descriptionInput.fill('Test message');
   }
 }

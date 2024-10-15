@@ -28,8 +28,8 @@ test.describe('Transfer Funds and Make Payments', () => {
 
     /* await page.selectOption('#tf_fromAccountId', '2')
     await page.selectOption('#tf_toAccountId', '3')
-    await page.type('#tf_amount', '500')
-    await page.type('#tf_description', 'Test message')
+    await page.fill('#tf_amount', '500')
+    await page.fill('#tf_description', 'Test message')
     await page.click('#btn_submit') */
     await transferFundsPage.createTransfer();
     await transferFundsPage.clickOnSubmit();

@@ -45,8 +45,8 @@ test.describe('My first test suite', () => {
     await page.goto('http://zero.webappsecurity.com/index.html');
     await page.click('#signin_button');
 
-    await page.type('#user_login', 'some username');
-    await page.type('#user_password', 'some pswd');
+    await page.fill('#user_login', 'some username');
+    await page.fill('#user_password', 'some pswd');
     await page.click('text=Sign in');
 
     const errorMessage = page.locator('.alert-error');

@@ -26,16 +26,16 @@ export class LoginPage extends AbstractPage {
   }
 
   async login(username: string, password: string) {
-    await this.usernameInput.type(username);
-    await this.passwordInput.type(password);
+    await this.usernameInput.fill(username);
+    await this.passwordInput.fill(password);
     await this.submitButton.click();
   }
 
   async snapshotErrorMessage() {
-    await expect(await this.errorMessage.screenshot()).toMatchSnapshot('login-error.png');
+    expect(await this.errorMessage.screenshot()).toMatchSnapshot('login-error.png');
   }
 
   async snapshotLoginForm() {
-    await expect(await this.passwordInput.screenshot()).toMatchSnapshot('login-form.png');
+    expect(await this.passwordInput.screenshot()).toMatchSnapshot('login-form.png');
   }
 }

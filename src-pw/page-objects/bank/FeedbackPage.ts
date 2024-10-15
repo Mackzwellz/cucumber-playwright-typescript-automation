@@ -37,10 +37,10 @@ export class FeedbackPage {
   }
 
   async fillForm(name: string, email: string, subject: string, comment: string) {
-    await this.nameInput.type(name);
-    await this.emailInput.type(email);
-    await this.subjectInput.type(subject);
-    await this.commentInput.type(comment);
+    await this.nameInput.fill(name);
+    await this.emailInput.fill(email);
+    await this.subjectInput.fill(subject);
+    await this.commentInput.fill(comment);
   }
 
   async submitForm() {
