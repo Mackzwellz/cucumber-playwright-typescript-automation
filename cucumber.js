@@ -15,7 +15,7 @@ const config = {
     'progress-bar'
   ],
   formatOptions: { snippetInterface: 'async-await' },
-  import: ['src*/**/*.ts'],
+  import: ['src-cu/**/*.ts'],
   worldParameters: getWorldParams()
 };
 
