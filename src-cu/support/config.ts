@@ -6,6 +6,7 @@ const browserOptions: LaunchOptions = {
     'media.navigator.permission.disabled': true,
     'media.navigator.streams.fake': true
   },
+  headless: false,
   slowMo: 0
 };
 

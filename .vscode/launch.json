@@ -1,12 +1,90 @@
 {
   "configurations": [
     {
+      "name": "[Custom] ts-node EXTENSION DEBUG",
+      "type": "node",
+      "request": "launch",
+      "args": ["${relativeFile}"],
+      "runtimeArgs": ["-r", "ts-node/register"],
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    {
+      "args": ["${relativeFile}"],
+      "cwd": "${workspaceRoot}",
+      "name": "[Default] Current TS File",
+      "request": "launch",
+      "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+      "sourceMaps": true,
+      "type": "node"
+    },
+    {
+      "name": "[Default] Attach by Process ID",
+      "processId": "${command:PickProcess}",
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "env": {
+        "NODE_OPTIONS": "--loader ts-node/esm"
+      },
+      "request": "launch",
+      // "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
+
+      "program": "${workspaceRoot}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      //"program": "run debug-test",
+      // --format message
+      // "args": ["${relativeFile}"], // whole file - working
+      //"args": ["${workspaceFolder}/features/conduit.feature:4"], // 1 example - example
+      "args": ["${relativeFile}:${lineNumber}"], // 1 example - working
+      "name": "[Cucumber] Selected Scenario Example",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+      // "windows": {
+      //   "program": "${workspaceFolder}/node_modules/cucumber/bin/cucumber"
+      // }
+    },
+    {
+      "name": "zTS file",
+      "type": "node",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "localRoot": "${workspaceFolder}",
+      "skipFiles": ["<node_internals>/**", "node_modules/**"],
+      "runtimeArgs": ["--import", "tsx"],
+      //"args": ["${file}"]
+      "args": [
+        "${workspaceRoot}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+        "${workspaceRoot}/features/*.feature",
+        "--tags",
+        "@debug"
+      ]
+    },
+
+    {
+      "name": "zDebugMode",
+      "type": "node",
+      "request": "launch",
+      "program": "node",
+      "runtimeArgs": [
+        //"tsx",
+        "${workspaceRoot}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+        "${workspaceRoot}/features/*.feature",
+        "--tags",
+        "@debug"
+      ]
+    },
+    {
+      //"type": "node-terminal",
       "console": "internalConsole",
       "env": {
         "DEBUG": "pw:api",
         "PWDEBUG": "1"
       },
-      "name": "debug",
+      "name": "zCucumber debug",
       "outputCapture": "std",
       "request": "launch",
       "runtimeArgs": ["tsx", "./node_modules/.bin/cucumber-js", "${file}"],
@@ -18,26 +96,11 @@
         "DEBUG": "pw:api",
         "PWDEBUG": "1"
       },
-      "name": "debug-only",
+      "name": "zDebug-test",
       "outputCapture": "std",
       "request": "launch",
-      "runtimeArgs": ["tsx", "./node_modules/.bin/cucumber-js", "${file}", "--tags", "@only"],
+      "runtimeArgs": ["tsx", "./node_modules/@cucumber/cucumber/bin/cucumber.js", "${file}", "--tags", "@debug"],
       "skipFiles": ["<node_internals>/**"]
-    },
-    {
-      "name": "Attach by Process ID",
-      "processId": "${command:PickProcess}",
-      "request": "attach",
-      "skipFiles": ["<node_internals>/**"]
-    },
-    {
-      "args": ["${relativeFile}"],
-      "cwd": "${workspaceRoot}",
-      "name": "Current TS File",
-      "request": "launch",
-      "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
-      "sourceMaps": true,
-      "type": "node"
     }
   ],
   // Use IntelliSense to learn about possible attributes.

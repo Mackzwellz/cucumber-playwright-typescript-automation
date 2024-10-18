@@ -15,12 +15,12 @@ const config = {
     'progress-bar'
   ],
   formatOptions: { snippetInterface: 'async-await' },
-  import: ['src-cucumber/**/*.ts'],
+  import: ['src*/**/*.ts'],
   worldParameters: getWorldParams()
 };
 
 if (process.env.USE_ALLURE) {
-  config.format.push('./src-cucumber/support/reporters/allure-reporter.ts');
+  config.format.push('./src-cu/support/reporters/allure-reporter.ts');
 } else {
   config.format.push('@cucumber/pretty-formatter');
 }
