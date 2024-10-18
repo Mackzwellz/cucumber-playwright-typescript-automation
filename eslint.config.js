@@ -135,7 +135,7 @@ export default [
       'no-undef': 2,
       'no-undefined': 0,
       'no-unreachable': 1,
-      'no-unused-expressions': 1,
+      'no-unused-expressions': 2,
       'no-unused-vars': [
         1,
         {

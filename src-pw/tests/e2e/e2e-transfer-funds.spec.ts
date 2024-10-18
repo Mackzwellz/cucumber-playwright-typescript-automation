@@ -23,7 +23,7 @@ test.describe('Transfer Funds and Make Payments', () => {
     await page.goto('http://zero.webappsecurity.com/bank/transfer-funds.html');
   });
 
-  test('Transfer funds', async ({ page }) => {
+  test('Transfer funds', async () => {
     await navbar.clickOnTab('Transfer Funds');
 
     /* await page.selectOption('#tf_fromAccountId', '2')

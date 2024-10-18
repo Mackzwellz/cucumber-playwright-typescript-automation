@@ -15,7 +15,7 @@ test.describe.parallel.only('Login / Logout Flow', async () => {
   });
 
   // Negative Scenario
-  test('Negative Scenario for login', async ({ page }) => {
+  test('Negative Scenario for login', async () => {
     await homePage.clickOnSignIn();
     await loginPage.login('invalid_username', 'invalid_password');
     await loginPage.wait(3000);

@@ -23,7 +23,7 @@ test.describe('New Payment', () => {
     await page.goto('http://zero.webappsecurity.com/bank/transfer-funds.html');
   });
 
-  test('Should send new payment', async ({ page }) => {
+  test('Should send new payment', async () => {
     await navbar.clickOnTab('Pay Bills');
     await paymentPage.createPayment();
     await paymentPage.assertSuccessMessage();

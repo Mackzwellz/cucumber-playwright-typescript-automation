@@ -15,14 +15,14 @@ test.describe('Feedback Form', () => {
   });
 
   // Reset feedback form
-  test('Reset feedback form', async ({ page }) => {
+  test('Reset feedback form', async () => {
     await feedbackPage.fillForm('John Doe', 'johndoe@gmail.com', 'Something', 'lorem ipsum');
     await feedbackPage.clearForm();
     await feedbackPage.assertReset();
   });
 
   // Submit feedback form
-  test('Submit feedback form', async ({ page }) => {
+  test('Submit feedback form', async () => {
     await feedbackPage.fillForm('John Doe', 'johndoe@gmail.com', 'Something', 'lorem ipsum');
     await feedbackPage.submitButton.click();
     await feedbackPage.feedBackFromSent();

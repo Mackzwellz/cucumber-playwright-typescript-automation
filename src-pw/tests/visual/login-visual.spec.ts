@@ -16,11 +16,11 @@ test.describe.parallel.only('Login Page Visual Tests', () => {
     await homePage.clickOnSignIn();
   });
 
-  test('Login Form', async ({ page }) => {
+  test('Login Form', async () => {
     await loginPage.snapshotLoginForm();
   });
 
-  test('Login Error Message', async ({ page }) => {
+  test('Login Error Message', async () => {
     await loginPage.login('Fail', 'some invalid password');
     await loginPage.snapshotErrorMessage();
   });
