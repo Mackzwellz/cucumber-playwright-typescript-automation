@@ -19,12 +19,14 @@
   },
   "cucumber.features": ["features/**/*.feature"],
   "cucumber.glue": ["src*/**/*.ts"],
-
-  "cucumberTestRunner.env": {
-    "NODE_OPTIONS": "--import tsx",
-    "PWDEBUG": 1
+  "cucumberTestExtension.env": {
+    "NODE_OPTIONS": "--import tsx"
+    //"PWDEBUG": 1,
+    //"DEBUG": "pw:api"
   },
-  "cucumberTestRunner.profile": "",
+  //"cucumberTestExtension.profile": "",
+  //"cucumberTestExtension.rootDirectory": "${workspaceRoot}", // WHERE CUCUMBER IS. internally appends "node_modules/@cucumber/cucumber/bin/cucumber.js"
+  //"cucumberTestExtension.workingDirectory": "${workspaceRoot}", // WHERE TO RUN TESTS FROM
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "explicit",
     "source.fixAll": "explicit",

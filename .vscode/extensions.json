@@ -25,6 +25,7 @@
     "sonarsource.sonarlint-vscode",
     "streetsidesoftware.code-spell-checker",
     "wmaurer.change-case",
-    "ziyasal.vscode-open-in-github"
+    "ziyasal.vscode-open-in-github",
+    "aristotelos.cucumber-test-extension"
   ]
 }
